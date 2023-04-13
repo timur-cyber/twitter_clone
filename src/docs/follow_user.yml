@@ -1,0 +1,12 @@
+summary: "Follow User"
+description: "Simple API to follow user."
+produces:
+- "application/json"
+responses:
+  200:
+    description: "Success"
+    schema:
+      type: "object"
+      properties:
+        result:
+          type: "boolean"

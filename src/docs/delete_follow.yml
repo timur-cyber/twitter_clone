@@ -1,0 +1,12 @@
+summary: "Unfollow User"
+description: "Simple API to unfollow user."
+produces:
+- "application/json"
+responses:
+  200:
+    description: "Success"
+    schema:
+      type: "object"
+      properties:
+        result:
+          type: "boolean"

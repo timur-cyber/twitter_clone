@@ -1,0 +1,5 @@
+/src/dev/
+/src/prod/
+.DS_Store
+__pycache__
+.idea

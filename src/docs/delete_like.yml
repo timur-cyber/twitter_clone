@@ -1,0 +1,12 @@
+summary: "Delete Like"
+description: "Simple API to delete like."
+produces:
+- "application/json"
+responses:
+  200:
+    description: "Success"
+    schema:
+      type: "object"
+      properties:
+        result:
+          type: "boolean"

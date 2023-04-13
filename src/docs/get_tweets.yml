@@ -1,0 +1,53 @@
+summary: "Get Tweets List"
+description: "Simple API to get all tweets."
+produces:
+- "application/json"
+responses:
+  200:
+    description: "Success"
+    schema:
+      type: "object"
+      properties:
+        result:
+          type: "boolean"
+        tweets:
+          type: array
+          items:
+            type: "object"
+            properties:
+              id:
+                type: "integer"
+              content:
+                type: "string"
+              attachments:
+                type: array
+                items:
+                  link:
+                    type: "string"
+              author:
+                type: "object"
+                properties:
+                  id:
+                    type: "integer"
+                  name:
+                    type: "string"
+              likes:
+                type: array
+                items:
+                  type: "object"
+                  properties:
+                    user_id:
+                      type: "integer"
+                    name:
+                      type: "string"
+  400:
+    description: "Failure"
+    schema:
+      type: "object"
+      properties:
+        result:
+          type: "boolean"
+        error_type:
+          type: "string"
+        error_message:
+          type: "string"

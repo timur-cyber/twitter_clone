@@ -1,0 +1,12 @@
+summary: "Put Like"
+description: "Simple API to put like."
+produces:
+- "application/json"
+responses:
+  200:
+    description: "Success"
+    schema:
+      type: "object"
+      properties:
+        result:
+          type: "boolean"

@@ -1,0 +1,22 @@
+summary: "Create Media"
+description: "Simple API to adding media."
+produces:
+- "application/json"
+consumes:
+ - multipart/form-data
+parameters:
+ - in: formData
+   name: upfile
+   type: file
+   description: The file to upload.
+
+responses:
+  200:
+    description: "Success"
+    schema:
+      type: "object"
+      properties:
+        result:
+          type: "boolean"
+        media_id:
+          type: "integer"

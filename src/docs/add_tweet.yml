@@ -1,0 +1,26 @@
+summary: "Create Tweet"
+description: "Simple API to create tweets."
+produces:
+- "application/json"
+parameters:
+- name: body
+  in: body
+  schema:
+    type: "object"
+    properties:
+      tweet_data:
+        type: "string"
+      tweet_media_ids:
+        type: array
+        items:
+          type: integer
+responses:
+  200:
+    description: "Success"
+    schema:
+      type: "object"
+      properties:
+        result:
+          type: "boolean"
+        tweet_id:
+          type: "integer"

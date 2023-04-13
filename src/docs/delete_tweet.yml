@@ -1,0 +1,12 @@
+summary: "Delete Tweet"
+description: "Simple API to delete tweet."
+produces:
+- "application/json"
+responses:
+  200:
+    description: "Success"
+    schema:
+      type: "object"
+      properties:
+        result:
+          type: "boolean"

@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    env_file:
+      - .envs/.postgres
+  web:
+    build: ./src
+    command: gunicorn --bind 0.0.0.0:5001 manage:app
+    volumes:
+      - ./src/logs:/code/src/logs
+      - ./src/media:/code/src/media
+      - ./src/alembic/versions:/code/src/alembic/versions
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "5001:80"
+    env_file:
+      - .envs/.postgres
+      - .envs/.wsgi
+      - .envs/.sentry
+    depends_on:
+      - db
+  nginx:
+    build: ./nginx
+    volumes:
+      - ./src/static:/src/static
+      - ./src/media:/src/media
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+  prometheus:
+    image: prom/prometheus
+    platform: linux/arm64/v8
+    volumes:
+      - ./prometheus/config.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - 9090:9090
+    depends_on:
+      - web
+  grafana:
+    image: grafana/grafana
+    platform: linux/arm64/v8
+    ports:
+      - 3000:3000
+    depends_on:
+      - web
+      - prometheus

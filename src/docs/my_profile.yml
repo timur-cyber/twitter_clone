@@ -1,0 +1,37 @@
+summary: "Get My Profile"
+description: "Simple API to get my profile."
+produces:
+- "application/json"
+responses:
+  200:
+    description: "Success"
+    schema:
+      type: "object"
+      properties:
+        result:
+          type: "boolean"
+        user:
+          type: "object"
+          properties:
+            id:
+              type: "integer"
+            name:
+              type: "string"
+            followers:
+              type: array
+              items:
+                type: "object"
+                properties:
+                  id:
+                    type: "integer"
+                  name:
+                    type: "string"
+            following:
+              type: array
+              items:
+                type: "object"
+                properties:
+                  id:
+                    type: "integer"
+                  name:
+                    type: "string"
